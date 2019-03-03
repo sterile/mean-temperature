@@ -17,16 +17,22 @@ namespace mean_temperature
             const int STOP = 999, // The number being used to stop the program
                 LOW = -20,        // The lowest temperature allowed
                 HIGH = 130;       // The highest temperature allowed
+
             int counter = 0,    // A counter for the number of temperatures entered.
                 temperature,    // The temperature reported by the user
                 temperatureSum = 0; // The sum of temperatures provided by the user.
+
             double mean; // The mean temperature
+
             bool valid; // Boolean for if a valid temperature was entered
 
+
+            // Initial run
             WriteLine($"Enter temperatures from {LOW} to {HIGH} ({STOP} to stop)");
             Write("Enter temperature: ");
             valid = int.TryParse(ReadLine(), out temperature);
 
+            // While block, will run until sentinel is entered
             while (temperature != 999)
             {
                 if (valid && temperature >= LOW && temperature <= HIGH)
@@ -46,6 +52,7 @@ namespace mean_temperature
                 }
             }
 
+            // Performs calculations and reports to user
             mean = (double)temperatureSum / counter;
 
             WriteLine($"You entered {counter} valid temperatures.");
